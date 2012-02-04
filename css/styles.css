@@ -1,0 +1,235 @@
+/*------------------------------------*\
+	RESET
+\*------------------------------------*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+	margin:0;
+	padding:0;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+    display:block;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img{ 
+	border:0;
+}
+address,caption,cite,dfn,th,var{
+	font-style:normal;
+	font-weight:normal;
+}
+caption,th{
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6{
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after{
+	content:'';
+}
+abbr,acronym{
+	border:0;
+}
+
+/*------------------------------------*\
+	BEGIN
+\*------------------------------------*/
+
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	text-align: center;
+	font: normal 100% Arial, sans-serif;
+}
+
+#body-wrap {
+	width: 100%;
+	min-width: 820px;
+	height: 100%;
+	position: relative;
+	background: #000;
+}
+canvas {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+
+#player {
+	width: 40px;
+	height: 40px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	margin-top: -20px;
+	background: #fff;
+	border-radius: 20px;
+	-webkit-box-shadow: 0px 0px 3px #fff;
+}
+.squares #player {
+	border-radius: 10px;
+}
+#player.nodot {
+	display: none;
+}
+
+/* Buttons */
+a {
+	display: block;
+	position: relative;
+	padding: 0 1em;
+	cursor: pointer;
+	line-height: 45px;
+	font-weight: bold;
+	text-decoration: none;
+	color: rgba(255,255,255, 0.8); 
+	background-image: -webkit-linear-gradient(bottom left, rgba(0,0,0, 1), rgba(10,10,10, 1));
+	text-shadow: -1px -1px 0px rgba(30, 30, 30, 0.8);
+	border-radius: 7px;
+	box-shadow: 1px 1px 1px #000;
+}
+a.toggleBtn {
+	min-width: 40px;
+	display: none;
+}
+a.toggleBtn .LED {
+	width: 6px;
+	height: 6px;
+	display: block;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	border-radius: 3px;
+	background: -webkit-radial-gradient(2px 3px, circle, rgba(123, 139, 110, 1), rgba(30, 60,8, 1));
+	box-shadow: inset 0px 1px 1px rgba(40, 40, 40, 0.8);
+}
+a.toggleBtn.on .LED {
+	background: -webkit-radial-gradient(2px 3px, circle, #fff 0%, rgba(164, 251, 120, 1) 20%, rgba(50, 176, 4, 1) 100%);
+	box-shadow: 0px 0px 6px rgba(164, 251, 120, 0.7);	/* LED glow effect */
+}
+a.toggleBtn.noLED .LED {
+	display: none;
+}
+label {
+	cursor: pointer;
+}
+
+
+.metal {
+	width: 50px;
+	height: 50px;
+	float: left;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	text-shadow: rgba(102, 102, 102, .5) 0 -1px 0, rgba(255, 255, 255, .6) 0 2px 1px;
+	background-color: #E6E6E6;
+	box-shadow: inset hsla(0,0%,15%, 1) 0 0px 0px 4px, /* border */ inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */ inset hsla(0,0%,0%, .25) 0 -1px 0px 7px,	/* bottom SD */ inset hsla(0,0%,100%,.7) 0 2px 1px 7px, /* top HL */ hsla(0,0%, 0%,.15) 0 -5px 6px 4px, /* outer SD */ hsla(0,0%,100%,.5) 0 5px 6px 4px;
+	-webkit-transition: color .2s;
+}
+
+
+
+/*
+ *		LATTICE
+ */
+#lattice {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: 0;
+	cursor: none;
+	background: -webkit-radial-gradient(50% 44%, cover, rgb(10, 8, 7) 0%, rgb(10, 10, 10) 100%);
+	opacity: 0.1;
+	-webkit-transition: opacity 3s ease-out;
+}
+#lattice.loaded {
+	opacity: 1;
+}
+#lattice > div {
+	width: 160px;
+	height: 160px;
+	float: left;
+	position: relative;
+}
+#lattice > div span {		/* span = disc . We do this so that div (full square) = hoverstate */
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: -webkit-linear-gradient(top, #22249a, rgba(0,0,0,9));
+	border-radius: 50%;
+	box-shadow: inset 0 1 2px #11111;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: all 3s ease-out;
+}
+#lattice > div:hover span {
+	background-image: -webkit-linear-gradient(top, rgb(0,0,150), rgba(0,0,0,9));
+	-webkit-transform: rotateX(2000deg) rotateY(45deg) rotateZ(30deg) scale(0.1);
+	opacity: 0.01;
+}
+#lattice.squares > div span {
+	border-radius: 0;
+	background-image: -webkit-linear-gradient(top, #22249a, rgba(13,13,13,9));
+}
+#lattice.squares > div:hover span {
+	-webkit-transform: rotateY(2000deg) rotateZ(45deg) rotateX(30deg) scale(0.1);
+	-webkit-transition: all 5s ease-out;
+}
+
+/*
+ *		TRANSPORT
+ */
+#transport {
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 1em;
+	z-index: 20;
+	background: #121212;
+	border-top: 1px solid #222;
+	box-shadow: 0 0px 30px #000000;
+}
+#transport a {
+	float: left;
+	margin: 0 10px;
+}
+#transport a:hover {
+	color: #fff;
+}
+#transport a:active {
+	margin-top: 1px;
+	margin-left: 11px;
+	box-shadow: -1px -1px 1px rgba(70, 70, 70, 0.6);
+}
+#transport #waveType {
+	width: 80px;
+}
+
+#mixer {
+	height: 300px;
+	width: 300px;
+	display: none;
+	position: absolute;
+	bottom: 0;
+	background-image: -webkit-linear-gradient(top, rgba(66, 66, 66, 0.4), rgba(0, 0, 0, 1));
+}
+.fader {
+	width: 33px;
+	float: left;
+	background: white;
+	margin: 8px 0 0 55px;
+}
+
+
+
+
+

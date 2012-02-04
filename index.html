@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML5 Audio Experiment</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.17.custom.css" />
+	</head>
+	<body>
+		<div id="body-wrap">
+			
+			<canvas id="canvas"></canvas>
+			
+			<div id="lattice">
+				<div class="disc"><span></span></div>
+			</div>
+			
+			<div id="mixer">
+				<div id="loop1vol" class="fader"></div>
+				<div id="loop2vol" class="fader"></div>
+				<div id="loop3vol" class="fader"></div>
+			</div>
+			
+			<div id="transport">
+				<div class="faderBtns">
+					<a id="loop1" class="toggleBtn">Play|Stop</a>
+					<a id="loop2" class="toggleBtn">Play|Stop</a>				
+					<a id="loop3" class="toggleBtn">Play|Stop</a>
+				</div>
+				
+				<a id="waveType" class="toggleBtn noLED">Circles|Squares</a>
+				
+			</div>
+			
+		</div>
+		
+		<!-- cursor -->
+		<div id="player"></div>
+		
+		<!-- load scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="js/UI.js"></script>
+		<script src="js/Sample.js"></script>
+		<script src="js/SineWave.js"></script>
+		<script src="js/App.js"></script>
+		
+	</body>
+</html>
