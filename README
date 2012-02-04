@@ -1,0 +1,4 @@
+Chrome Audio Experiment
+========================
+Playing around with the Javascript Web Audio API to see what is possible with regards to looping audio tracks and some modular synthesis. The audioContext is currently only available in Webkit by using webkitAudioContext on the canvas element. 
+https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html
