@@ -72,7 +72,7 @@ canvas {
 	margin-top: -20px;
 	background: #fff;
 	border-radius: 20px;
-	-webkit-box-shadow: 0px 0px 3px #fff;
+	box-shadow: 0px 0px 3px #fff;
 }
 .squares #player {
 	border-radius: 10px;
@@ -91,7 +91,7 @@ a {
 	font-weight: bold;
 	text-decoration: none;
 	color: rgba(255,255,255, 0.8); 
-	background-image: -webkit-linear-gradient(bottom left, rgba(0,0,0, 1), rgba(10,10,10, 1));
+	background-image: linear-gradient(bottom left, rgba(0,0,0, 1), rgba(10,10,10, 1));
 	text-shadow: -1px -1px 0px rgba(30, 30, 30, 0.8);
 	border-radius: 7px;
 	box-shadow: 1px 1px 1px #000;
@@ -108,11 +108,11 @@ a.toggleBtn .LED {
 	top: 6px;
 	right: 6px;
 	border-radius: 3px;
-	background: -webkit-radial-gradient(2px 3px, circle, rgba(123, 139, 110, 1), rgba(30, 60,8, 1));
+	background: radial-gradient(2px 3px, circle, rgba(123, 139, 110, 1), rgba(30, 60,8, 1));
 	box-shadow: inset 0px 1px 1px rgba(40, 40, 40, 0.8);
 }
 a.toggleBtn.on .LED {
-	background: -webkit-radial-gradient(2px 3px, circle, #fff 0%, rgba(164, 251, 120, 1) 20%, rgba(50, 176, 4, 1) 100%);
+	background: radial-gradient(2px 3px, circle, #fff 0%, rgba(164, 251, 120, 1) 20%, rgba(50, 176, 4, 1) 100%);
 	box-shadow: 0px 0px 6px rgba(164, 251, 120, 0.7);	/* LED glow effect */
 }
 a.toggleBtn.noLED .LED {
@@ -120,6 +120,9 @@ a.toggleBtn.noLED .LED {
 }
 label {
 	cursor: pointer;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-user-select: none; /* IE10+ */
 }
 
 
@@ -132,7 +135,7 @@ label {
 	text-shadow: rgba(102, 102, 102, .5) 0 -1px 0, rgba(255, 255, 255, .6) 0 2px 1px;
 	background-color: #E6E6E6;
 	box-shadow: inset hsla(0,0%,15%, 1) 0 0px 0px 4px, /* border */ inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */ inset hsla(0,0%,0%, .25) 0 -1px 0px 7px,	/* bottom SD */ inset hsla(0,0%,100%,.7) 0 2px 1px 7px, /* top HL */ hsla(0,0%, 0%,.15) 0 -5px 6px 4px, /* outer SD */ hsla(0,0%,100%,.5) 0 5px 6px 4px;
-	-webkit-transition: color .2s;
+	transition: color .2s;
 }
 
 
@@ -146,9 +149,9 @@ label {
 	position: relative;
 	z-index: 0;
 	cursor: none;
-	background: -webkit-radial-gradient(50% 44%, cover, rgb(10, 8, 7) 0%, rgb(10, 10, 10) 100%);
+	background: radial-gradient(50% 44%, cover, rgb(10, 8, 7) 0%, rgb(10, 10, 10) 100%);
 	opacity: 0.1;
-	-webkit-transition: opacity 3s ease-out;
+	transition: opacity 3s ease-out;
 }
 #lattice.loaded {
 	opacity: 1;
@@ -163,24 +166,24 @@ label {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background-image: -webkit-linear-gradient(top, #22249a, rgba(0,0,0,9));
+	background-image: linear-gradient(0deg, #22249a, rgba(0,0,0,9));
 	border-radius: 50%;
 	box-shadow: inset 0 1 2px #11111;
-	-webkit-transform-style: preserve-3d;
-	-webkit-transition: all 3s ease-out;
+	transform-style: preserve-3d;
+	transition: all 3s ease-out;
 }
 #lattice > div:hover span {
-	background-image: -webkit-linear-gradient(top, rgb(0,0,150), rgba(0,0,0,9));
-	-webkit-transform: rotateX(2000deg) rotateY(45deg) rotateZ(30deg) scale(0.1);
+	background-image: linear-gradient(0deg, rgb(0,0,150), rgba(0,0,0,9));
+	transform: rotateX(2000deg) rotateY(45deg) rotateZ(30deg) scale(0.1);
 	opacity: 0.01;
 }
 #lattice.squares > div span {
 	border-radius: 0;
-	background-image: -webkit-linear-gradient(top, #22249a, rgba(13,13,13,9));
+	background-image: linear-gradient(0deg, #22249a, rgba(13,13,13,9));
 }
 #lattice.squares > div:hover span {
-	-webkit-transform: rotateY(2000deg) rotateZ(45deg) rotateX(30deg) scale(0.1);
-	-webkit-transition: all 5s ease-out;
+	transform: rotateY(2000deg) rotateZ(45deg) rotateX(30deg) scale(0.1);
+	transition: all 5s ease-out;
 }
 
 /*
@@ -220,7 +223,7 @@ label {
 	display: none;
 	position: absolute;
 	bottom: 0;
-	background-image: -webkit-linear-gradient(top, rgba(66, 66, 66, 0.4), rgba(0, 0, 0, 1));
+	background-image: linear-gradient(0deg, rgba(66, 66, 66, 0.4), rgba(0, 0, 0, 1));
 }
 .fader {
 	width: 33px;

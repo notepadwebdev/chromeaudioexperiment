@@ -3,7 +3,7 @@
 		// Create global context through which all sound will be output
 		var context;
 		try {
-			context = new webkitAudioContext();
+			context = new AudioContext();
 		}
 		catch(e) {
 			alert('Web Audio API is not supported in this browser. Use CHROME.');

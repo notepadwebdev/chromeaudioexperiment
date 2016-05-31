@@ -8,8 +8,8 @@
 		var obj = this;
 		this.context = context;
 		
-		this.node = this.context.createJavaScriptNode(1024, 1, 1);
-		this.gainNode = this.context.createGainNode();
+		this.node = this.context.createScriptProcessor(1024, 1, 1);
+		this.gainNode = this.context.createGain();
 		this.node.connect(this.gainNode);
 		this.gainNode.connect(this.context.destination);
 		this.sampleRate = 44100;

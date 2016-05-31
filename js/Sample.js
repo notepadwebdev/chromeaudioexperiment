@@ -17,7 +17,7 @@
 				this.loop = options.loop;
 				this.onLoad = options.onLoad;
 				
-				this.gainNode 		= this.context.createGainNode();
+				this.gainNode 		= this.context.createGain();
 				this.source 			= this.context.createBufferSource();
 				this.source.loop 	= this.loop;
 				this.buffer				= null;
@@ -52,7 +52,7 @@
 				this.source.connect(this.gainNode);
 				this.gainNode.connect(this.context.destination);
 				//this.setGain(1);
-				this.source.noteOn(time);
+				this.source.start(time);
 			}
 			Sample.prototype.stop = function() {
 				this.source.disconnect();
